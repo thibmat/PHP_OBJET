@@ -70,19 +70,5 @@ class Database
       // On retourne l'ensemble
       return "'" . htmlentities($str) . "'" ;
   }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }
 ?>
