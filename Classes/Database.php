@@ -15,7 +15,7 @@ class Database
   {
       // Connexion à MySQL
       $this->pdo = new PDO(
-            'mysql:host=localhost;dbname=user',
+            'mysql:host=localhost;dbname=catalogue;charset=utf8',
             'root',
             'root',
             [
@@ -27,18 +27,26 @@ class Database
    * Exécute la requête SQL fournie et retourne un éventuel tableau
    * @param string $sql
    * @param string $className
+   * @param bool $unique
    * @return array|null
    */
   public function query(string $sql, ?string $className='null'): ?array
   {
-
       $result = $this->pdo->query($sql);
-      if($classname != 'null'){
-        return $result->fetchAll(PDO::FETCH_CLASS, $className);
-      }else {
-        return $result->fetchAll();
+      if ($classname != 'null'){
+          return $result->fetchAll(PDO::FETCH_CLASS, $className);
+      }else{
+          return $result->fetchAll();
       }
   }
+  public function queryUnique(string $sql, ?string $className='null'): ?array
+  {
+      $result = $this->pdo->query($sql);
+
+          return $result->fetch();
+
+  }
+
   /**
    * Execute une requête SQL pour :
    * - La création (INSERT INTO)
@@ -70,22 +78,5 @@ class Database
       // On retourne l'ensemble
       return "'" . htmlentities($str) . "'" ;
   }
-<<<<<<< HEAD
-=======
-
-
-
-
-
-
-
-
-
-
-
-
-
-
->>>>>>> 8148a3bed77367e2c6db8a1268f8f5d36a859b4a
 }
 ?>
