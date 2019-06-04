@@ -70,5 +70,22 @@ class Database
       // On retourne l'ensemble
       return "'" . htmlentities($str) . "'" ;
   }
+<<<<<<< HEAD
+=======
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+>>>>>>> 8148a3bed77367e2c6db8a1268f8f5d36a859b4a
 }
 ?>
